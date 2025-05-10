@@ -1,16 +1,16 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         """
-        nums = [2, 4, 7, 11, 15]; target = 9
+        nums = [3, 2, 4]; target = 6
         """
+        my_dict = {}
+        #iterating over the nums
         for i in range(len(nums)):
-            for j in range(i+1, len(nums)):
-                if nums[i]+nums[j] == target:
-                    return [i, j]
-                    
-
-
-
-
-
-        
+            #how much we are falling short compared to target
+            missing_num = target - nums[i]
+            #checking if it is already available in dict
+            if my_dict.get(missing_num, -1) == -1:   
+                #not found, add it to the dict
+                my_dict[nums[i]] = i
+            else:
+                return [i, my_dict.get(missing_num)]
