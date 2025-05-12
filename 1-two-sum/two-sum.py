@@ -1,16 +1,18 @@
-class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
+class Solution(object):
+    def twoSum(self, nums, target):
         """
-        nums = [3, 2, 4]; target = 6
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
         """
-        my_dict = {}
-        #iterating over the nums
-        for i in range(len(nums)):
-            #how much we are falling short compared to target
-            missing_num = target - nums[i]
-            #checking if it is already available in dict
-            if my_dict.get(missing_num, -1) == -1:   
-                #not found, add it to the dict
-                my_dict[nums[i]] = i
+        ip_dict = {}
+        for i, ele in enumerate(nums):
+            lookup = target - ele
+            idx = ip_dict.get(lookup, -1)
+            if idx is not -1:
+                return [i, idx]
             else:
-                return [i, my_dict.get(missing_num)]
+                ip_dict[ele] = i
+
+
+        
